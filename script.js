@@ -4,6 +4,7 @@ const responseContainer = document.querySelector('#response-container');
 const engineListElement = document.querySelector('#engines');
 const selectElements = document.querySelector('.select-options');
 let engineList = [];
+const secretApiKey = process.env.OPENAI_SECRET;
 
 var url = 'https://api.openai.com/v1/engines';
 
@@ -14,7 +15,7 @@ xhr.setRequestHeader('Accept', 'application/json');
 xhr.setRequestHeader(
 	'Authorization',
 	// 'Bearer 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',
-	`Bearer ${process.env.OPENAI_SECRET}`,
+	`Bearer ${secretApiKey}`,
 );
 
 xhr.onreadystatechange = function () {
@@ -52,7 +53,7 @@ form.addEventListener('submit', function (event) {
 	xhttp.setRequestHeader(
 		'Authorization',
 		// 'Bearer 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',
-		`Bearer ${process.env.OPENAI_SECRET}`,
+		`Bearer ${secretApiKey}`,
 	);
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
